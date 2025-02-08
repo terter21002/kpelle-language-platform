@@ -1,10 +1,19 @@
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/_common/Layout.component";
+import Home from "./pages/home";
+import Language from "./pages/language";
+
+const App = () => {
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-xl p-4 m-4">Start Coding in React 19</h1>
-      <p className="bg-gray-300 p-2 rounded-sm text-3xl">hello worlds</p>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/language" element={<Language />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
