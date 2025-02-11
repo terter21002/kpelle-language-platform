@@ -1,7 +1,7 @@
 const Language = () => {
   return (
     <div>
-      <div>d</div>
+      <div>This is language selection page.</div>
     </div>
   );
 };
