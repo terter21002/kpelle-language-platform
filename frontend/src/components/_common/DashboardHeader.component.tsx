@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const DashboardHeader = () => {
   return (
-    <div>
-      <div>dd</div>
+    <div className="p-2 flex items-center justify-between">
+      <div>Logo</div>
+      <div>Naviate button</div>
+      <div>signup button</div>
     </div>
   );
 };
