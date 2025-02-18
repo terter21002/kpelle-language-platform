@@ -1,7 +1,11 @@
+import AboutPage from "./AboutUs";
+import LanguageSection from "./languageSection";
+
 const Home = () => {
   return (
     <div>
-      <div>THis is Homepage</div>
+      <AboutPage />
+      <LanguageSection />
     </div>
   );
 };
