@@ -2,6 +2,7 @@ import AboutPage from "./AboutUs";
 import LanguageSection from "./languageSection";
 import Culture from "./culture";
 import Testimonial from "./testimonial";
+import WhyChoosePage from "./whyChoose";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <LanguageSection />
       <Culture />
       <Testimonial />
+      <WhyChoosePage />
     </div>
   );
 };
