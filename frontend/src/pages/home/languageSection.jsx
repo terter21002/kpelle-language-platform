@@ -11,7 +11,7 @@ const LanguageSection = () => {
       image: "/landing_page/lang_group2.png",
     },
     {
-      name: "Our Language Group",
+      name: "Gur Language Group",
       description: "(Largely Spoken in the northern regions)",
       image: "/landing_page/lang_group3.png",
     },

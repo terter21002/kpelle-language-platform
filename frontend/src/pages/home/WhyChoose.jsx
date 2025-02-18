@@ -41,7 +41,7 @@ const WhyChoosePage = () => {
   ];
 
   return (
-    <section className="py-12 px-4 max-w-7xl mx-auto">
+    <section className="py-12 px-4 container mx-auto">
       <h2 className="text-3xl font-bold text-center mb-12">
         Why Choose Liberian Native Voice?
       </h2>

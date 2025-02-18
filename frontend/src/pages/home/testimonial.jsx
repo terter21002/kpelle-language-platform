@@ -43,9 +43,12 @@ const Testimonial = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container mx-auto">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg p-6">
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow-lg px-16 py-12"
+            >
               <div className="flex flex-col items-center text-center">
                 {/* User Image */}
                 <div className="w-20 h-20 rounded-full bg-gray-200 overflow-hidden mb-4">
