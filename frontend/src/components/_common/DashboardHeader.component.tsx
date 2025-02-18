@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Play } from "lucide-react";
+import MainButton from "../button/MainButton";
 
 const DashboardHeader = () => {
   return (
@@ -47,9 +48,7 @@ const DashboardHeader = () => {
           <button className="text-white hover:text-white/70 text-lg cursor-pointer">
             Login
           </button>
-          <button className="cursor-pointer relative px-6 py-2 text-white text-lg rounded-[2rem] shadow-sm bg-gradient-to-b from-[#E74C3C] to-[#962d21] hover:from-[#962d21] hover:to-[#E74C3C] active:translate-y-0.5 transition-transform">
-            Sign Up
-          </button>
+          <MainButton title="Sign Up" />
         </div>
       </nav>
 
@@ -57,8 +56,8 @@ const DashboardHeader = () => {
       <main className="container mx-auto px-4 pt-16 pb-32 text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-white max-w-5xl mx-auto leading-tight">
           Discover the Beauty of{" "}
-          <span className="text-yellow-400">Liberian Native Voice</span>{" "}
-          Language and <br />
+          <span className="text-[#FFBC02]">Liberian Native Voice</span> Language
+          and <br />
           Culture
         </h1>
 
@@ -76,7 +75,7 @@ const DashboardHeader = () => {
           />
         </div>
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
-          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 px-3 py-2 rounded-4xl bg-[#C1392B]">
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 px-3 py-2 rounded-4xl bg-[#C23925]">
             <Link
               to="#"
               className="rounded-full bg-[#E8EAF6] px-6 py-2 text-[#4A2B26] font-medium hover:opacity-90 transition-opacity"

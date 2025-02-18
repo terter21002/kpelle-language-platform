@@ -9,7 +9,7 @@ const Layout = () => {
         <DashboardHeader />
       </header>
 
-      <main className="container mx-auto p-4 mb-4">
+      <main className="">
         <Outlet />
       </main>
     </div>
