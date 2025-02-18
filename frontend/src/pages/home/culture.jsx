@@ -1,5 +1,4 @@
 import MainButton from "../../components/button/MainButton";
-import "./culture.css";
 
 const Culture = () => {
   return (

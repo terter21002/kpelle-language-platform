@@ -1,6 +1,7 @@
 import AboutPage from "./AboutUs";
 import LanguageSection from "./languageSection";
 import Culture from "./culture";
+import Testimonial from "./testimonial";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <AboutPage />
       <LanguageSection />
       <Culture />
+      <Testimonial />
     </div>
   );
 };
