@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import PropTypes from "prop-types";
 import "./mainFooter.css";
 
 const FooterColumn = ({ title, links }) => {
@@ -19,6 +20,16 @@ const FooterColumn = ({ title, links }) => {
       </ul>
     </div>
   );
+};
+
+FooterColumn.propTypes = {
+  title: PropTypes.string.isRequired,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      href: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default function Footer() {
