@@ -1,6 +1,6 @@
 const ShopSection = () => {
   return (
-    <section className="bg-[#FDF8F4] min-h-[600px] flex items-center">
+    <section className="min-h-[600px] flex items-center">
       <div className="max-w-7xl mx-auto px-4 pb-12 md:pb-20 grid md:grid-cols-2 gap-8 items-center">
         <div className="relative w-full h-[400px] md:h-[600px]">
           <img

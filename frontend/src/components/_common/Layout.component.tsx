@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import DashboardHeader from "./DashboardHeader.component";
+import Footer from "./MainFooter";
 
 const Layout = () => {
   return (
@@ -9,9 +10,11 @@ const Layout = () => {
         <DashboardHeader />
       </header>
 
-      <main className="">
+      <main>
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 };
