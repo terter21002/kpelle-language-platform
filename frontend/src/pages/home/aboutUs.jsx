@@ -2,7 +2,7 @@ const AboutPage = () => {
   return (
     <div className="w-full">
       {/* About Us Section */}
-      <section className="container mx-auto px-4 pt-12 md:pt-16 lg:pt-20">
+      <section className="container mx-auto px-4 pt-12 md:pt-20 lg:pt-24 pb-10">
         <div className="grid gap-24 md:grid-cols-2 items-center">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-[#C4392A]">

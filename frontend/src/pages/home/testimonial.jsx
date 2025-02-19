@@ -19,7 +19,7 @@ const Testimonial = () => {
     },
   ];
   return (
-    <div className="relative bg-[#C23925] py-36 md:py-36">
+    <div className="relative bg-[#C23925] py-36">
       {/* Top Curve */}
       <div className="custom-shape-divider-top-1739894898">
         <svg
@@ -110,17 +110,6 @@ const Testimonial = () => {
           />
         </svg>
       </div>
-      {/* <div className="absolute bottom-0 left-0 right-0 h-16 md:h-24">
-        <svg
-          viewBox="0 0 1440 100"
-          fill="white"
-          xmlns="http://www.w3.org/2000/svg"
-          className="absolute top-0 w-full h-full"
-          preserveAspectRatio="none"
-        >
-          <path d="M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z" />
-        </svg>
-      </div> */}
     </div>
   );
 };

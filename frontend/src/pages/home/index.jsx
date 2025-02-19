@@ -4,6 +4,7 @@ import Culture from "./culture";
 import Testimonial from "./testimonial";
 import WhyChoosePage from "./whyChoose";
 import TutorBooking from "./TutorBooking";
+import ShopSection from "./ShopeSection";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Testimonial />
       <WhyChoosePage />
       <TutorBooking />
+      <ShopSection />
     </div>
   );
 };
