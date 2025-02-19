@@ -45,10 +45,15 @@ const DashboardHeader = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <button className="text-white hover:text-white/70 text-lg cursor-pointer">
+          <Link
+            to="/login"
+            className="text-white hover:text-white/70 text-lg cursor-pointer"
+          >
             Login
-          </button>
-          <MainButton title="Sign Up" />
+          </Link>
+          <Link to="/sign-up">
+            <MainButton title="Sign Up" />
+          </Link>
         </div>
       </nav>
 
