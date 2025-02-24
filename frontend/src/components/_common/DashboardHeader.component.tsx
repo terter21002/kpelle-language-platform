@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, Play } from "lucide-react";
+import { ChevronDown, Play, LogOutIcon } from "lucide-react";
 import MainButton from "../button/MainButton";
+import { useAuth } from "../../contexts/authContext";
 
 const DashboardHeader = () => {
+  const { state, dispatch } = useAuth();
+  const { isAuthenticated, user } = state;
+  const handleLogout = () => {
+    // Clear user data and token
+    dispatch({ type: "LOGOUT" });
+    localStorage.removeItem("token"); // Remove token from local storage
+  };
   return (
     <div
       className="min-h-screen bg-cover bg-center"
@@ -45,15 +53,32 @@ const DashboardHeader = () => {
         </div>
 
         <div className="flex items-center space-x-4">
-          <Link
-            to="/login"
-            className="text-white hover:text-white/70 text-lg cursor-pointer"
-          >
-            Login
-          </Link>
-          <Link to="/sign-up">
-            <MainButton title="Sign Up" />
-          </Link>
+          {isAuthenticated ? (
+            <>
+              {/* <span className="text-white hover:text-white/70 text-lg cursor-pointer">
+                Welcome, {user.firstName}
+              </span> 
+              */}
+              <button
+                onClick={handleLogout}
+                className="text-white hover:text-white/70 text-lg cursor-pointer"
+              >
+                <LogOutIcon />
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-white hover:text-white/70 text-lg cursor-pointer"
+              >
+                Login
+              </Link>
+              <Link to="/sign-up">
+                <MainButton title="Sign Up" />
+              </Link>
+            </>
+          )}
         </div>
       </nav>
 
