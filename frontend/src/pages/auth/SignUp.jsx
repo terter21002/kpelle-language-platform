@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import {
   Button,
@@ -12,11 +12,56 @@ import {
   IconButton,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { UseAuth } from "../../contexts/authContext";
+import axios from "axios";
+import { registerRoute } from "../../utils/APIroute";
+import { toast } from "react-toastify";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+  const { dispatch } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [language, setLanguage] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    console.log(
+      firstName,
+      lastName,
+      email,
+      language,
+      password,
+      confirmPassword
+    );
+    setError("");
+    try {
+      const response = await axios.post(registerRoute, {
+        firstName,
+        lastName,
+        email,
+        language,
+        password,
+        confirmPassword,
+      });
+      console.log(response);
+      toast.success("Signup successful! Please log in.");
+      navigate("/login");
+      dispatch({ type: "LOGIN", payload: response.data.user });
+    } catch (err) {
+      if (err.response && err.response.data) {
+        setError(err.response.data.message); // Set error message from backend response
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
+    }
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white">
@@ -43,14 +88,28 @@ export default function SignUp() {
                   explore Liberia&apos;s rich linguistic heritage.
                 </p>
               </div>
-              <form className="space-y-4">
+              {error && <p className="text-red-500 text-center">{error}</p>}{" "}
+              {/* Show error message */}
+              <form onSubmit={handleSignUp} className="space-y-4">
                 {/* Name Fields */}
                 <div className="space-y-2">
-                  <TextField label="First Name" fullWidth required />
+                  <TextField
+                    label="First Name"
+                    fullWidth
+                    required
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
                 </div>
 
                 <div className="space-y-2">
-                  <TextField label="Last Name" fullWidth required />
+                  <TextField
+                    label="Last Name"
+                    fullWidth
+                    required
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
                 </div>
                 <div className="space-y-2">
                   <TextField
@@ -58,6 +117,8 @@ export default function SignUp() {
                     type="email"
                     fullWidth
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
@@ -88,6 +149,8 @@ export default function SignUp() {
                     type={showPassword ? "text" : "password"}
                     fullWidth
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -109,6 +172,8 @@ export default function SignUp() {
                     type={showConfirmPassword ? "text" : "password"}
                     fullWidth
                     required
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -160,6 +225,7 @@ export default function SignUp() {
 
                 {/* Sign Up Button */}
                 <Button
+                  type="submit"
                   variant="contained"
                   style={{ backgroundColor: "#C23925", borderRadius: "25px" }}
                   size="large"

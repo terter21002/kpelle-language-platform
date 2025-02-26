@@ -1,11 +1,47 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import axios from "axios";
+import { UseAuth } from "../../contexts/authContext";
+import { loginRoute } from "../../utils/APIroute";
+import { toast } from "react-toastify";
 
 export default function Login() {
+  const { dispatch } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      const response = await axios.post(loginRoute, {
+        email,
+        password,
+      });
+      console.log(response.data.token);
+      toast.success("Login successful!");
+      navigate("/");
+      dispatch({
+        type: "LOGIN",
+        payload: { user: response.data.user, token: response.data.token },
+      });
+
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+    } catch (err) {
+      if (err.response && err.response.data) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
+    }
+  };
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white">
@@ -30,14 +66,17 @@ export default function Login() {
                 <p className="text-muted-foreground text-[#57270E] text-[16px]">
                   Kindly Login Your Details.
                 </p>
+                {error && <p className="text-red-500">{error}</p>}
               </div>
-              <form className="space-y-4">
+              <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
                   <TextField
                     label="Email Address"
                     type="email"
                     fullWidth
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
 
@@ -48,6 +87,8 @@ export default function Login() {
                     type={showPassword ? "text" : "password"}
                     fullWidth
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -87,6 +128,7 @@ export default function Login() {
 
                 {/* Sign Up Button */}
                 <Button
+                  type="submit"
                   variant="contained"
                   style={{ backgroundColor: "#C23925", borderRadius: "25px" }}
                   size="large"

@@ -44,7 +44,13 @@ export const register = async (req, res) => {
     });
     await newUser.save();
 
-    res.status(201).json({ message: 'User registered successfully' });
+    const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
+      expiresIn: '1h',
+    });
+
+    res
+      .status(201)
+      .json({ message: 'User registered successfully', token, user: newUser });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: 'Internal server error' });
@@ -56,11 +62,16 @@ export async function login(req, res) {
 
   try {
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: 'Invalid credentials' });
+    if (!user)
+      return res
+        .status(400)
+        .json({ message: 'Email or password is not correct' });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res
+        .status(400)
+        .json({ message: 'Email or password is not correct' });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: '1h',
