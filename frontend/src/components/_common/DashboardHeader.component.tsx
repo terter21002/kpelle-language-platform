@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, Play, LogOutIcon } from "lucide-react";
 import MainButton from "../button/MainButton";
-import { useAuth } from "../../contexts/authContext";
+import { UseAuth } from "../../contexts/authContext";
 
 const DashboardHeader = () => {
-  const { state, dispatch } = useAuth();
+  const { state, dispatch } = UseAuth();
   const { isAuthenticated, user } = state;
   const handleLogout = () => {
-    // Clear user data and token
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("token"); // Remove token from local storage
+    localStorage.removeItem("user"); // Remove user data from local storage
   };
   return (
     <div

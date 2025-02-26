@@ -4,11 +4,12 @@ import { Google } from "@mui/icons-material";
 import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
-import { useAuth } from "../../contexts/authContext";
+import { UseAuth } from "../../contexts/authContext";
 import { loginRoute } from "../../utils/APIroute";
+import { toast } from "react-toastify";
 
 export default function Login() {
-  const { dispatch } = useAuth();
+  const { dispatch } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,6 +25,7 @@ export default function Login() {
         password,
       });
       console.log(response.data.token);
+      toast.success("Login successful!");
       navigate("/");
       dispatch({
         type: "LOGIN",
@@ -31,8 +33,13 @@ export default function Login() {
       });
 
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
     } catch (err) {
-      setError(err.response.data.message);
+      if (err.response && err.response.data) {
+        setError(err.response.data.message);
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
     }
   };
 

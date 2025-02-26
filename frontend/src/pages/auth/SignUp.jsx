@@ -12,14 +12,14 @@ import {
   IconButton,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useAuth } from "../../contexts/authContext";
+import { UseAuth } from "../../contexts/authContext";
 import axios from "axios";
 import { registerRoute } from "../../utils/APIroute";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 export default function SignUp() {
   const navigate = useNavigate();
-  const { dispatch } = useAuth();
+  const { dispatch } = UseAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [language, setLanguage] = useState("");
@@ -51,12 +51,12 @@ export default function SignUp() {
         confirmPassword,
       });
       console.log(response);
-      toast.success("Registration successful!");
+      toast.success("Signup successful! Please log in.");
       navigate("/login");
       dispatch({ type: "LOGIN", payload: response.data.user });
     } catch (err) {
       if (err.response && err.response.data) {
-        setError(err.response.data.message);
+        setError(err.response.data.message); // Set error message from backend response
       } else {
         setError("An unexpected error occurred. Please try again.");
       }
@@ -65,7 +65,6 @@ export default function SignUp() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-white">
-      <ToastContainer />
       <main className="w-full max-w-7xl px-4">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
           {/* Left Side Image */}

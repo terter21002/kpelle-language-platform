@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
 import PropTypes from "prop-types"; // Import PropTypes
 
 const initialState = {
@@ -32,6 +32,14 @@ const authReducer = (state, action) => {
 
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
+  useEffect(() => {
+    // Check local storage for token and user data
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (token && user) {
+      dispatch({ type: "LOGIN", payload: { user, token } });
+    }
+  }, []);
   return (
     <AuthContext.Provider value={{ state, dispatch }}>
       {children}
@@ -43,7 +51,7 @@ AuthProvider.propTypes = {
   children: PropTypes.node.isRequired, // Ensure children is required
 };
 // Create a custom hook to use the AuthContext
-export const useAuth = () => {
+export const UseAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
     throw new Error("useAuth must be used within an AuthProvider");
