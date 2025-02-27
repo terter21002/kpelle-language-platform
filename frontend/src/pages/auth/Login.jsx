@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Google } from "@mui/icons-material";
+import { GoogleIcon } from "../../components/icon";
 import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
@@ -41,6 +41,10 @@ export default function Login() {
         setError("An unexpected error occurred. Please try again.");
       }
     }
+  };
+
+  const handleGoogleLogin = () => {
+    window.open("http://localhost:5000/api/auth/google", "_self");
   };
 
   return (
@@ -141,6 +145,7 @@ export default function Login() {
                 <div></div>
                 {/* Google Button */}
                 <Button
+                  onClick={handleGoogleLogin}
                   variant="outlined"
                   fullWidth
                   size="large"
@@ -151,7 +156,7 @@ export default function Login() {
                   }}
                   className="gap-3"
                 >
-                  <Google /> Continue with Google
+                  <GoogleIcon /> Continue with Google
                 </Button>
               </form>
             </div>

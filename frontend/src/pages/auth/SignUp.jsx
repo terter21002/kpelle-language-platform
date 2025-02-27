@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Google } from "@mui/icons-material";
+import { GoogleIcon } from "../../components/icon";
 import {
   Button,
   TextField,
@@ -61,6 +61,10 @@ export default function SignUp() {
         setError("An unexpected error occurred. Please try again.");
       }
     }
+  };
+
+  const handleGoogleLogin = () => {
+    window.open("http://localhost:5000/api/auth/google", "_self");
   };
 
   return (
@@ -238,6 +242,7 @@ export default function SignUp() {
                 <div></div>
                 {/* Google Button */}
                 <Button
+                  onClick={handleGoogleLogin}
                   variant="outlined"
                   fullWidth
                   size="large"
@@ -248,7 +253,7 @@ export default function SignUp() {
                   }}
                   className="gap-3"
                 >
-                  <Google /> Continue with Google
+                  <GoogleIcon /> Continue with Google
                 </Button>
               </form>
             </div>
