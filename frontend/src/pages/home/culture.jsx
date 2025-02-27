@@ -33,8 +33,9 @@ const Culture = () => {
                   For&nbsp;Kids:
                 </span>
                 <span className="text-gray-600">
-                  Interactive games, colorful visuals, and fun challenges make
-                  language learning exciting and engaging.
+                  Offer interactive games and lessons in all dialects (Kpelle,
+                  Bassa, Vai, etc.) using colorful visuals and fun challenges to
+                  make learning engaging for younger learners.
                 </span>
               </li>
 
@@ -43,9 +44,9 @@ const Culture = () => {
                   For&nbsp;Teens:
                 </span>
                 <span className="text-gray-600">
-                  Structured lessons and progress trackers help build confidence
-                  and fluency while maintaining a modern, dynamic learning
-                  experience.
+                  Structured lessons and progress tracking in dialects such as
+                  Kpelle, Vai, and Grebo, designed to help build fluency and
+                  confidence.
                 </span>
               </li>
 
@@ -64,8 +65,8 @@ const Culture = () => {
                   For&nbsp;Seniors:
                 </span>
                 <span className="text-gray-600">
-                  Easy-to-navigate interfaces and practical lessons ensure that
-                  anyone can connect with the Kpelle language and culture.
+                  Simple, easy-to-navigate lessons in dialects like Grebo,
+                  Serryo, and Kru, focusing on practical conversational skills.
                 </span>
               </li>
             </ul>

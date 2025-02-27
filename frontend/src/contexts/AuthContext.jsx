@@ -33,7 +33,6 @@ const authReducer = (state, action) => {
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
   useEffect(() => {
-    // Check local storage for token and user data
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
     if (token && user) {
@@ -46,11 +45,11 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-// Validate the children prop
+
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired, // Ensure children is required
+  children: PropTypes.node.isRequired,
 };
-// Create a custom hook to use the AuthContext
+
 export const UseAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {

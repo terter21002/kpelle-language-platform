@@ -13,19 +13,20 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError("");
+    // setError("");
     try {
       const response = await axios.post(loginRoute, {
         email,
         password,
       });
       console.log(response.data.token);
-      toast.success("Login successful!");
+
+      toast.success(response.data.user.firstName + ", Welcome to our website!");
       navigate("/");
       dispatch({
         type: "LOGIN",
@@ -36,9 +37,11 @@ export default function Login() {
       localStorage.setItem("user", JSON.stringify(response.data.user));
     } catch (err) {
       if (err.response && err.response.data) {
-        setError(err.response.data.message);
+        toast.error(err.response.data.message);
+        // setError(err.response.data.message);
       } else {
-        setError("An unexpected error occurred. Please try again.");
+        toast.error("An unexpected error occurred. Please try again.");
+        // setError("An unexpected error occurred. Please try again.");
       }
     }
   };
@@ -70,7 +73,7 @@ export default function Login() {
                 <p className="text-muted-foreground text-[#57270E] text-[16px]">
                   Kindly Login Your Details.
                 </p>
-                {error && <p className="text-red-500">{error}</p>}
+                {/* {error && <p className="text-red-500">{error}</p>} */}
               </div>
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
