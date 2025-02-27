@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Google } from "@mui/icons-material";
+import { GoogleIcon } from "../../components/icon";
 import {
   Button,
   TextField,
@@ -253,7 +253,7 @@ export default function SignUp() {
                   }}
                   className="gap-3"
                 >
-                  <Google /> Continue with Google
+                  <GoogleIcon /> Continue with Google
                 </Button>
               </form>
             </div>
