@@ -1,12 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronDown, Play, LogOutIcon } from "lucide-react";
 import MainButton from "../button/MainButton";
 import { UseAuth } from "../../contexts/authContext";
+import { toast } from "react-toastify";
+import axios from "axios";
 
 const DashboardHeader = () => {
   const { state, dispatch } = UseAuth();
   const { isAuthenticated, user } = state;
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+
+    if (token) {
+      localStorage.setItem("token", token);
+
+      dispatch({
+        type: "LOGIN",
+        payload: { token }, // Fetch user details if necessary
+      });
+
+      toast.success("Login successful!", { autoClose: 3000 });
+      navigate("/");
+    }
+  }, [dispatch, navigate]);
+
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
     localStorage.removeItem("token"); // Remove token from local storage

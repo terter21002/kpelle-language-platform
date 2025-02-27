@@ -63,6 +63,10 @@ export default function SignUp() {
     }
   };
 
+  const handleGoogleLogin = () => {
+    window.open("http://localhost:5000/api/auth/google", "_self");
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center bg-white">
       <main className="w-full max-w-7xl px-4">
@@ -238,6 +242,7 @@ export default function SignUp() {
                 <div></div>
                 {/* Google Button */}
                 <Button
+                  onClick={handleGoogleLogin}
                   variant="outlined"
                   fullWidth
                   size="large"
