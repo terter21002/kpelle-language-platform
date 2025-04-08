@@ -14,7 +14,7 @@ const Home = () => {
       <Culture />
       <Testimonial />
       <WhyChoosePage />
-      <TutorBooking />
+      <TutorBooking className="bg-[#FFF5F5] py-12 px-6" />
       <ShopSection />
     </div>
   );

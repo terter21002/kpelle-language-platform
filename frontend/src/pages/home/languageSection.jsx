@@ -1,6 +1,9 @@
 import "./languageSection.css";
+import { useNavigate } from "react-router-dom";
 
 const LanguageSection = () => {
+  const navigate = useNavigate();
+
   const languages = [
     {
       name: "Kwa Language Group",
@@ -72,7 +75,10 @@ const LanguageSection = () => {
         </div>
 
         <div className="text-center">
-          <button className="bg-white text-[#C23925] hover:bg-gray-200 px-6 py-3 rounded-4xl text-lg font-semibold cursor-pointer shadow-xl hover:shadow-2xl">
+          <button
+            onClick={() => navigate("/language")}
+            className="bg-white text-[#C23925] hover:bg-gray-200 px-6 py-3 rounded-4xl text-lg font-semibold cursor-pointer shadow-xl hover:shadow-2xl"
+          >
             Explore Dialect
           </button>
         </div>

@@ -1,8 +1,9 @@
 import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import TutorCard from "../../components/card/TutorCard";
 import MainButton from "../../components/button/MainButton";
+import PropTypes from "prop-types";
 
-export default function TutorBooking() {
+export default function TutorBooking(props) {
   const tutors = [
     {
       name: "Mattew j.",
@@ -40,7 +41,7 @@ export default function TutorBooking() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FFF5F5] py-12 px-4">
+    <div className="min-h-screen px-4 py-12" {...props}>
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
@@ -98,3 +99,7 @@ export default function TutorBooking() {
     </div>
   );
 }
+
+TutorBooking.propTypes = {
+  props: PropTypes.object.isRequired,
+};
