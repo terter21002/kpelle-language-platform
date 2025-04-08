@@ -9,16 +9,16 @@ const AboutPage = () => {
               About Us
             </h2>
             <p className="text-gray-700 text-base md:text-lg">
-              Our Platform is designed to help you learn Liberian Most Spoken
-              dialect is an interactive and educational platform designed to
-              teach the Kpelle language while immersing learners in the rich and
-              vibrant culture of the Kpelle people. The website offers fun and
-              engaging activities, including quizzes, games, and multimedia
-              lessons, to make learning enjoyable and effective for all skill
-              levels—from beginners to advanced learners. Through its authentic
-              and culturally rich content, the platform celebrates Kpelle
-              traditions, music, and proverbs, fostering a deeper connection to
-              the language&apos;s heritage.
+              Our Platform is designed to help you learn Liberian native
+              language and culture is an interactive and educational platform
+              designed to teach the Kpelle language while immersing learners in
+              the rich and vibrant culture of the Kpelle people. The website
+              offers fun and engaging activities, including quizzes, games, and
+              multimedia lessons, to make learning enjoyable and effective for
+              all skill levels—from beginners to advanced learners. Through its
+              authentic and culturally rich content, the platform celebrates
+              Kpelle traditions, music, and proverbs, fostering a deeper
+              connection to the language&apos;s heritage.
             </p>
           </div>
           <div className="relative h-[300px] md:h-[430px]">

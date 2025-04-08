@@ -4,22 +4,22 @@ const LanguageSection = () => {
   const languages = [
     {
       name: "Kwa Language Group",
-      description: "(Largely Spoken in the coastal regions)",
+      description: "(Largely Spoken in Niger-Congo region)",
       image: "/landing_page/lang_group1.png",
     },
     {
+      name: "Krahn Language Group",
+      description: "(Largely Spoken in Atlantic-Congo region)",
+      image: "/landing_page/lang_group3.png",
+    },
+    {
       name: "Mande Language Group",
-      description: "(Predominantly in the northwest)",
+      description: "(Predominantly in the Southern region)",
       image: "/landing_page/lang_group2.png",
     },
     {
       name: "Gur Language Group",
-      description: "(Largely Spoken in the northern regions)",
-      image: "/landing_page/lang_group3.png",
-    },
-    {
-      name: "Kwa Language Group",
-      description: "(Largely Spoken in the coastal regions)",
+      description: "(Largely Spoken in Eastern region)",
       image: "/landing_page/lang_group4.png",
     },
   ];

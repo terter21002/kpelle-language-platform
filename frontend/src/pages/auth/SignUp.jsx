@@ -28,7 +28,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -40,7 +40,7 @@ export default function SignUp() {
       password,
       confirmPassword
     );
-    setError("");
+    // setError("");
     try {
       const response = await axios.post(registerRoute, {
         firstName,
@@ -56,9 +56,11 @@ export default function SignUp() {
       dispatch({ type: "LOGIN", payload: response.data.user });
     } catch (err) {
       if (err.response && err.response.data) {
-        setError(err.response.data.message); // Set error message from backend response
+        toast.error(err.response.data.message);
+        // setError(err.response.data.message);
       } else {
-        setError("An unexpected error occurred. Please try again.");
+        toast.error("An unexpected error occurred. Please try again.");
+        // setError("An unexpected error occurred. Please try again.");
       }
     }
   };
@@ -92,7 +94,7 @@ export default function SignUp() {
                   explore Liberia&apos;s rich linguistic heritage.
                 </p>
               </div>
-              {error && <p className="text-red-500 text-center">{error}</p>}{" "}
+              {/* {error && <p className="text-red-500 text-center">{error}</p>}{" "} */}
               {/* Show error message */}
               <form onSubmit={handleSignUp} className="space-y-4">
                 {/* Name Fields */}

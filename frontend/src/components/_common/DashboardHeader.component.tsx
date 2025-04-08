@@ -129,7 +129,7 @@ const DashboardHeader = () => {
         <div className="mt-16 flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6">
           <div className="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-6 px-3 py-2 rounded-4xl bg-[#C23925]">
             <Link
-              to="#"
+              to="language"
               className="rounded-full bg-[#E8EAF6] px-6 py-2 text-[#4A2B26] font-medium hover:opacity-90 transition-opacity"
             >
               Start Learning
