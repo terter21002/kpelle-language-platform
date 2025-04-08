@@ -7,21 +7,20 @@ const MaskCard = ({ title, description, imageUrl }) => {
       elevation={3}
       className="h-full transition-transform duration-300 hover:scale-105"
     >
-      <div className="relative h-48">
+      <div className="flex items-center justify-center bg-gray-100 p-6">
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-full object-cover rounded-t-lg"
+          className="max-w-32 h-32 object-cover rounded-t-lg"
         />
       </div>
-      <div className="p-4">
-        <Typography variant="h6" className="mb-2 line-clamp-1">
+      <div className="px-6 py-6 flex-grow bg-[#5D2E1A] text-white rounded-sm">
+        <Typography variant="h6" className="text-center pb-2">
           {title}
         </Typography>
         <Typography
           variant="body2"
-          color="text.secondary"
-          className="line-clamp-2"
+          className="text-xs text-gray-200 text-center"
         >
           {description}
         </Typography>

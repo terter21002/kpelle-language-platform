@@ -1,6 +1,9 @@
 import MainButton from "../../components/button/MainButton";
+import { useNavigate } from "react-router-dom";
 
 const Culture = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="min-h-screen bg-white">
       <main className="container mx-auto px-4 py-8 md:py-12 lg:py-16">
@@ -76,7 +79,10 @@ const Culture = () => {
               effective—because learning has no age limit!
             </p>
 
-            <MainButton title="Start Learning" />
+            <MainButton
+              onClick={() => navigate("/language")}
+              title="Start Learning"
+            />
           </div>
         </div>
       </main>

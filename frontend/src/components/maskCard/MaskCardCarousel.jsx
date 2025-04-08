@@ -12,13 +12,20 @@ const MaskCardCarousel = ({ cards }) => {
       const width = window.innerWidth;
       const calculatedVisible =
         width < 640 ? 1 : width < 1024 ? 2 : width < 1280 ? 3 : 4;
-      setVisibleCards(Math.min(calculatedVisible, cards.length));
+      const safeVisible = Math.min(calculatedVisible, cards.length);
+      setVisibleCards(safeVisible);
+
+      // 💡 Fix: Adjust currentIndex to avoid overflow
+      setCurrentIndex((prevIndex) => {
+        const maxStartIndex = Math.max(0, cards.length - safeVisible);
+        return Math.min(prevIndex, maxStartIndex);
+      });
     };
 
     updateVisibleCards();
     window.addEventListener("resize", updateVisibleCards);
     return () => window.removeEventListener("resize", updateVisibleCards);
-  }, []);
+  }, [cards.length, visibleCards]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => {
@@ -75,8 +82,8 @@ const MaskCardCarousel = ({ cards }) => {
   return (
     <div className="flex justify-center w-full">
       <div className={`relative ${getContainerWidth()}`}>
-        <div className="overflow-hidden px-4">
-          <div className="flex gap-4 justify-center">
+        <div className="overflow-hidden px-5">
+          <div className="flex gap-10 justify-center py-10">
             {visibleCardItems.map((card, index) => (
               <div
                 key={`${currentIndex}-${index}`}
