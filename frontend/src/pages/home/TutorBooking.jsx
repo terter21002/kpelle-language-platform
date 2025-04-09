@@ -52,21 +52,21 @@ export default function TutorBooking(props) {
           </p>
         </div>
 
-        <div className="sm:flex gap-6 mb-8">
-          <div className="sm:mb-0 mb-6">
-            <FormControl sx={{ minWidth: 250 }}>
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mb-8 w-full">
+          <div className="w-full sm:w-[250px]">
+            <FormControl fullWidth>
               <InputLabel>Language</InputLabel>
-              <Select defaultValue="Language" label="Language">
+              <Select defaultValue="" label="Language">
                 <MenuItem value="kpelle">Kpelle</MenuItem>
                 <MenuItem value="bassa">Bassa</MenuItem>
               </Select>
             </FormControl>
           </div>
 
-          <div className="sm:mb-0 mb-6">
-            <FormControl sx={{ minWidth: 250 }}>
+          <div className="w-full sm:w-[250px]">
+            <FormControl fullWidth>
               <InputLabel>Price Range</InputLabel>
-              <Select defaultValue="Price Range" label="Price Range">
+              <Select defaultValue="" label="Price Range">
                 <MenuItem value="0-50">$0 - $50</MenuItem>
                 <MenuItem value="51-100">$51 - $100</MenuItem>
                 <MenuItem value="101+">$101+</MenuItem>
@@ -74,10 +74,10 @@ export default function TutorBooking(props) {
             </FormControl>
           </div>
 
-          <div>
-            <FormControl sx={{ minWidth: 250 }}>
+          <div className="w-full sm:w-[250px]">
+            <FormControl fullWidth>
               <InputLabel>Availability</InputLabel>
-              <Select defaultValue="Select Availability" label="Availability">
+              <Select defaultValue="" label="Availability">
                 <MenuItem value="morning">Morning</MenuItem>
                 <MenuItem value="afternoon">Afternoon</MenuItem>
                 <MenuItem value="evening">Evening</MenuItem>

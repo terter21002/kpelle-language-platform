@@ -42,7 +42,7 @@ const LanguageSection = () => {
         </svg>
       </div>
       <div className="container mx-auto px-4 pb-6">
-        <div className="text-center text-white mb-24">
+        <div className="text-center text-white mb-20">
           <h1 className="text-3xl md:text-4xl font-bold mb-4">
             Discover Languages to Learn
           </h1>
@@ -53,18 +53,15 @@ const LanguageSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {languages.map((language, index) => (
-            <div
-              key={index}
-              className="bg-white flex flex-col items-center text-center"
-            >
-              <div className="w-full aspect-square relative mb-4">
+            <div key={index} className="flex flex-col items-center text-center">
+              <div className="bg-white  w-full aspect-square relative mb-4">
                 <img
                   src={language.image}
                   alt={language.name}
                   className="object-contain w-full h-full"
                 />
               </div>
-              <div className="bg-[#C23925] w-full pt-10">
+              <div className="bg-[#C23925] w-full pt-4">
                 <h3 className="font-semibold text-white mb-1 text-xl">
                   {language.name}
                 </h3>
