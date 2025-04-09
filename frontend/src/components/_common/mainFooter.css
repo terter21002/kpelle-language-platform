@@ -14,6 +14,10 @@
   height: 294px;
 }
 
-.custom-shape-divider-top-1739929503 .shape-fill {
+.shape-fill-white {
   fill: #ffffff;
+}
+
+.shape-fill-yellow {
+  fill: #f5f5dc;
 }

@@ -74,7 +74,7 @@ export default function SignUp() {
       <main className="w-full max-w-7xl px-4">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
           {/* Left Side Image */}
-          <div className="relative hidden md:block">
+          <div className="relative hidden lg:block">
             <img
               src="/landing_page/header_logo.png"
               alt="Illustration"

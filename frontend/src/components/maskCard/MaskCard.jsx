@@ -1,11 +1,15 @@
 import { Paper, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 const MaskCard = ({ title, description, imageUrl }) => {
+  const navigate = useNavigate();
+
   return (
     <Paper
       elevation={3}
       className="h-full transition-transform duration-300 hover:scale-105"
+      onClick={() => navigate("/language-id")}
     >
       <div className="flex items-center justify-center bg-gray-100 p-6">
         <img
