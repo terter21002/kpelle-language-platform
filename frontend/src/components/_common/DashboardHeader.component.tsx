@@ -63,10 +63,7 @@ const DashboardHeader = () => {
               <ChevronDown className="w-4 h-4" />
             </button>
           </div>
-          <Link
-            to="/cultural-insight"
-            className="text-white hover:text-white/70"
-          >
+          <Link to="/culture" className="text-white hover:text-white/70">
             Cultural Insight
           </Link>
           <Link to="/subscription" className="text-white hover:text-white/70">
