@@ -2,8 +2,11 @@ import { Select, MenuItem, InputLabel, FormControl } from "@mui/material";
 import TutorCard from "../../components/card/TutorCard";
 import MainButton from "../../components/button/MainButton";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 export default function TutorBooking(props) {
+  const navigate = useNavigate();
+
   const tutors = [
     {
       name: "Mattew j.",
@@ -93,7 +96,10 @@ export default function TutorBooking(props) {
         </div>
 
         <div className="text-center">
-          <MainButton title="See All Tutor" />
+          <MainButton
+            onClick={() => navigate("/tutor")}
+            title="See All Tutor"
+          />
         </div>
       </div>
     </div>

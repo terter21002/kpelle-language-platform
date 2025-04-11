@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 
 const TutorCard = (props) => {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-lg">
+    <div
+      className="bg-white rounded-lg overflow-hidden shadow-lg hover:scale-102"
+      onClick={props.onclick}
+    >
       <div className="relative lg:h-72 md:h-56 h-48">
         <img
           src={props.imageSrc}
@@ -70,6 +73,7 @@ TutorCard.propTypes = {
   country: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
+  onclick: PropTypes.func.isRequired,
 };
 
 export default TutorCard;

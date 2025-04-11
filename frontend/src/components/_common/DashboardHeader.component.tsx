@@ -57,12 +57,9 @@ const DashboardHeader = () => {
           <Link to="/" className="text-white hover:text-white/70">
             Home
           </Link>
-          <div className="relative group">
-            <button className="flex items-center space-x-1 text-white hover:text-white/70 cursor-pointer">
-              <span>Courses</span>
-              <ChevronDown className="w-4 h-4" />
-            </button>
-          </div>
+          <Link to="/tutor" className="text-white hover:text-white/70">
+            Tutors
+          </Link>
           <Link to="/culture" className="text-white hover:text-white/70">
             Cultural Insight
           </Link>
