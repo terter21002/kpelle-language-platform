@@ -32,7 +32,7 @@ const Navbar = () => {
             <ChevronDown className="w-4 h-4" />
           </button>
         </div>
-        <Link to="/cultural-insight" className="text-black hover:text-black/70">
+        <Link to="/culture" className="text-black hover:text-black/70">
           Cultural Insight
         </Link>
         <Link to="/subscription" className="text-black hover:text-black/70">
