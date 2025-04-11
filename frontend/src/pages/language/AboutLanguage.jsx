@@ -23,7 +23,10 @@ const AboutLanguage = () => {
               platform celebrates Kpelle traditions, music, and proverbs,
               fostering a deeper connection to the language&apos;s heritage.
             </p>
-            <MainButton onClick={() => navigate("/")} title="Start Learning" />
+            <MainButton
+              onClick={() => navigate("/course")}
+              title="Start Learning"
+            />
           </div>
           <div className="relative h-[400px] md:h-[530px] col-span-2 order-1 md:order-2">
             <img

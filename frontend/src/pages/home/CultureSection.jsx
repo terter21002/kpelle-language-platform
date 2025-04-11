@@ -1,7 +1,7 @@
 import MainButton from "../../components/button/MainButton";
 import { useNavigate } from "react-router-dom";
 
-const Culture = () => {
+const CultureSection = () => {
   const navigate = useNavigate();
 
   return (
@@ -80,7 +80,7 @@ const Culture = () => {
             </p>
 
             <MainButton
-              onClick={() => navigate("/language")}
+              onClick={() => navigate("/culture")}
               title="Start Learning"
             />
           </div>
@@ -90,4 +90,4 @@ const Culture = () => {
   );
 };
 
-export default Culture;
+export default CultureSection;

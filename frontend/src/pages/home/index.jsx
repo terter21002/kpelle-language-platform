@@ -1,6 +1,6 @@
 import AboutPage from "./AboutUs";
-import LanguageSection from "./languageSection";
-import Culture from "./culture";
+import LanguageSection from "./LanguageSection";
+import CultureSection from "./CultureSection";
 import Testimonial from "./testimonial";
 import WhyChoosePage from "./whyChoose";
 import TutorBooking from "./TutorBooking";
@@ -11,7 +11,7 @@ const Home = () => {
     <div>
       <AboutPage />
       <LanguageSection />
-      <Culture />
+      <CultureSection />
       <Testimonial />
       <WhyChoosePage />
       <TutorBooking className="bg-[#FFF5F5] py-12 px-6" />
