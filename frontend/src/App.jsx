@@ -12,6 +12,8 @@ import CourseLevel from "./pages/language/courseSelection/CourseLevel";
 import LevelCheck from "./pages/language/courseSelection/LevelCheck";
 import Culture from "./pages/culture";
 import CultureLearnMore from "./pages/culture/CutureLearnMore";
+import Tutor from "./pages/tutor";
+import Booking from "./pages/tutor/Booking";
 
 const App = () => {
   return (
@@ -31,6 +33,9 @@ const App = () => {
           <Route path="/course" element={<Course />}>
             <Route index element={<CourseLevel />} />
             <Route path="/course/level-check" element={<LevelCheck />} />
+          </Route>
+          <Route path="/tutor" element={<Tutor />}>
+            <Route index element={<Booking />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronDown, LogOutIcon } from "lucide-react";
+import { LogOutIcon } from "lucide-react";
 import MainButton from "../button/MainButton";
 import { UseAuth } from "../../contexts/authContext";
 
@@ -26,12 +26,9 @@ const Navbar = () => {
         <Link to="/" className="text-black hover:text-black/70">
           Home
         </Link>
-        <div className="relative group">
-          <button className="flex items-center space-x-1 text-black hover:text-black/70 cursor-pointer">
-            <span>Tutors</span>
-            <ChevronDown className="w-4 h-4" />
-          </button>
-        </div>
+        <Link to="/tutor" className="text-black hover:text-black/70">
+          Tutors
+        </Link>
         <Link to="/culture" className="text-black hover:text-black/70">
           Cultural Insight
         </Link>
