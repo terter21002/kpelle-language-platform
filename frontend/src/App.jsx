@@ -11,6 +11,7 @@ import Course from "./pages/language/courseSelection";
 import CourseLevel from "./pages/language/courseSelection/CourseLevel";
 import LevelCheck from "./pages/language/courseSelection/LevelCheck";
 import Culture from "./pages/culture";
+import CultureLearnMore from "./pages/culture/CutureLearnMore";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/language" element={<Language />} />
             <Route path="/language-id" element={<SpecificLanguage />} />
             <Route path="/culture" element={<Culture />} />
+            <Route path="/culture/learn-more" element={<CultureLearnMore />} />
           </Route>
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<Login />} />

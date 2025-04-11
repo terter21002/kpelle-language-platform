@@ -217,7 +217,10 @@ const Culture = () => {
               fascinating blend of old and new, reflecting the resilience and
               spirit of its people.
             </p>
-            <MainButton onClick={() => navigate("/")} title="Learn More" />
+            <MainButton
+              onClick={() => navigate("/culture/learn-more")}
+              title="Learn More"
+            />
           </div>
           <div className="relative order-1 md:order-2">
             <img
