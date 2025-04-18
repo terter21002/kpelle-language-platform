@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {
+  BookOpenText,
   Book,
   BarChart2,
   Trophy,
@@ -20,7 +21,7 @@ const ClassLayout = () => {
 
   const navItems = [
     {
-      icon: <Book className="w-5 h-5" />,
+      icon: <BookOpenText className="w-5 h-5" />,
       label: "Learn",
       active: true,
       router: "/class/learn",
@@ -274,7 +275,6 @@ const ClassLayout = () => {
             </div>
           ))}
         </div>
-
         <main className="flex-1 p-4 overflow-auto bg-[#F4F4F4]">
           <Outlet />
         </main>
