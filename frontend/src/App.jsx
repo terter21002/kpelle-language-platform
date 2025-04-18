@@ -14,8 +14,15 @@ import Culture from "./pages/culture";
 import CultureLearnMore from "./pages/culture/CutureLearnMore";
 import Tutor from "./pages/tutor";
 import Booking from "./pages/tutor/Booking";
-// import Learn from "./pages/class/Learn";
+import Learn from "./pages/class/Learn";
+import ClassLayout from "./components/_common/ClassLayout";
 import Class from "./pages/class";
+import ClassCourse from "./pages/class/ClassCourse";
+import Progress from "./pages/class/Progress";
+import LeaderBoard from "./pages/class/Leaderboard";
+import Profile from "./pages/class/Profile";
+import Help from "./pages/class/Help";
+import ClassBooking from "./pages/class/ClassBooking";
 
 const App = () => {
   return (
@@ -39,7 +46,16 @@ const App = () => {
           <Route path="/tutor" element={<Tutor />}>
             <Route index element={<Booking />} />
           </Route>
-          <Route path="/class" element={<Class />} />
+          <Route path="/class" element={<ClassLayout />}>
+            <Route index element={<Class />} />
+            <Route path="/class/learn" element={<Learn />} />
+            <Route path="/class/course" element={<ClassCourse />} />
+            <Route path="/class/progress" element={<Progress />} />
+            <Route path="/class/leaderboard" element={<LeaderBoard />} />
+            <Route path="/class/profile" element={<Profile />} />
+            <Route path="/class/help" element={<Help />} />
+            <Route path="/class/booking" element={<ClassBooking />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
