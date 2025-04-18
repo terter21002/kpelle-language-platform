@@ -14,6 +14,8 @@ import Culture from "./pages/culture";
 import CultureLearnMore from "./pages/culture/CutureLearnMore";
 import Tutor from "./pages/tutor";
 import Booking from "./pages/tutor/Booking";
+// import Learn from "./pages/class/Learn";
+import Class from "./pages/class";
 
 const App = () => {
   return (
@@ -37,6 +39,7 @@ const App = () => {
           <Route path="/tutor" element={<Tutor />}>
             <Route index element={<Booking />} />
           </Route>
+          <Route path="/class" element={<Class />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
