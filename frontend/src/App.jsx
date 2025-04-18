@@ -23,6 +23,7 @@ import LeaderBoard from "./pages/class/Leaderboard";
 import Profile from "./pages/class/Profile";
 import Help from "./pages/class/Help";
 import ClassBooking from "./pages/class/ClassBooking";
+import ViewLeaderboard from "./pages/class/ViewLeaderboard";
 
 const App = () => {
   return (
@@ -52,6 +53,10 @@ const App = () => {
             <Route path="/class/course" element={<ClassCourse />} />
             <Route path="/class/progress" element={<Progress />} />
             <Route path="/class/leaderboard" element={<LeaderBoard />} />
+            <Route
+              path="/class/leaderboard/view"
+              element={<ViewLeaderboard />}
+            />
             <Route path="/class/profile" element={<Profile />} />
             <Route path="/class/help" element={<Help />} />
             <Route path="/class/booking" element={<ClassBooking />} />
