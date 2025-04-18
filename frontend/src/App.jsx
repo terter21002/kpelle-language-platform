@@ -24,6 +24,7 @@ import Profile from "./pages/class/Profile";
 import Help from "./pages/class/Help";
 import ClassBooking from "./pages/class/ClassBooking";
 import ViewLeaderboard from "./pages/class/ViewLeaderboard";
+import Discussion from "./pages/class/Discussion";
 
 const App = () => {
   return (
@@ -56,6 +57,10 @@ const App = () => {
             <Route
               path="/class/leaderboard/view"
               element={<ViewLeaderboard />}
+            />
+            <Route
+              path="/class/leaderboard/discussion"
+              element={<Discussion />}
             />
             <Route path="/class/profile" element={<Profile />} />
             <Route path="/class/help" element={<Help />} />

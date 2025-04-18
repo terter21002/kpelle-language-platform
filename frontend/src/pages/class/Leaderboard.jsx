@@ -84,8 +84,8 @@ const LeaderBoard = () => {
               ></div>
             </div>
             <div className="flex justify-center">
-              <Link to="/class/leaderboard/view">
-                <MainButton title="View Standing" />
+              <Link to="/class/leaderboard/discussion">
+                <MainButton title="View Discussion" />
               </Link>
             </div>
           </div>
