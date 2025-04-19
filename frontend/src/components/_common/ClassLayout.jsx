@@ -14,10 +14,11 @@ import {
 import { Menu, MenuItem, Button } from "@mui/material";
 import { ExpandMore as ExpandMoreIcon } from "@mui/icons-material";
 import { Outlet } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ClassLayout = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const navItems = [
     {
@@ -103,18 +104,22 @@ const ClassLayout = () => {
           </span>
         </div>
 
-        {navItems.map((item, index) => (
-          <div
-            key={index}
-            className={`flex items-center py-3 px-6 rounded-xl cursor-pointer ${
-              item.active ? "bg-[#DD4E38] text-white" : "hover:bg-[#F4F4F4]"
-            }`}
-            onClick={() => navigate(item.router)}
-          >
-            {item.icon}
-            <span className="ml-3">{item.label}</span>
-          </div>
-        ))}
+        {navItems.map((item, index) => {
+          const isActive = location.pathname === item.router;
+
+          return (
+            <div
+              key={index}
+              className={`flex items-center py-3 px-6 rounded-xl cursor-pointer ${
+                isActive ? "bg-[#DD4E38] text-white" : "hover:bg-[#F4F4F4]"
+              }`}
+              onClick={() => navigate(item.router)}
+            >
+              {item.icon}
+              <span className="ml-3">{item.label}</span>
+            </div>
+          );
+        })}
       </div>
 
       {/* Main Content */}
@@ -262,18 +267,23 @@ const ClassLayout = () => {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex justify-around items-center bg-[#F4F4F4] p-2">
-          {navItems.map((item, index) => (
-            <div
-              key={index}
-              className={`p-2 cursor-pointer ${
-                item.active
-                  ? "text-[#C84C32]"
-                  : "text-gray-500 hover:text-gray-400"
-              }`}
-            >
-              {item.icon}
-            </div>
-          ))}
+          {navItems.map((item, index) => {
+            const isActive = location.pathname === item.router;
+
+            return (
+              <div
+                key={index}
+                className={`p-2 cursor-pointer ${
+                  isActive
+                    ? "text-[#C84C32]"
+                    : "text-gray-500 hover:text-gray-400"
+                }`}
+                onClick={() => navigate(item.router)}
+              >
+                {item.icon}
+              </div>
+            );
+          })}
         </div>
         <main className="flex-1 p-4 overflow-auto bg-[#F4F4F4]">
           <Outlet />

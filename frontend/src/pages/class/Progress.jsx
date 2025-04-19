@@ -1,9 +1,30 @@
 import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const Progress = () => {
   const proficiency = 65;
   const modulesCompleted = 10;
   const totalModules = 50;
+  const [progress, setProgress] = useState(0);
+  const circleRef = useRef(null);
+  const gradientId = "gradientStroke";
+
+  useEffect(() => {
+    let currentProgress = 0;
+    const interval = setInterval(() => {
+      currentProgress += 1;
+      if (currentProgress > proficiency) {
+        clearInterval(interval);
+        currentProgress = proficiency;
+      }
+      setProgress(currentProgress);
+    }, 20);
+
+    return () => clearInterval(interval);
+  }, [proficiency]);
+
+  const strokeDasharray = 2 * Math.PI * 72;
+  const strokeDashoffset = strokeDasharray - (strokeDasharray * progress) / 100;
   const performanceData = [
     {
       category: "Vocabulary",
@@ -30,6 +51,13 @@ const Progress = () => {
       label: "Words Learned (B+)",
     },
   ];
+
+  const [animate, setAnimate] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setAnimate(true), 100);
+  }, []);
+
   const weeklyActivity = [
     { day: "Mon", minutes: 15 },
     { day: "Tue", minutes: 22 },
@@ -39,6 +67,7 @@ const Progress = () => {
     { day: "Sat", minutes: 30 },
     { day: "Sun", minutes: 5 },
   ];
+
   const totalLearningTime = "8hrs/20mins";
 
   return (
@@ -64,28 +93,44 @@ const Progress = () => {
           </div>
           <div className="flex justify-center">
             <div className="my-8 relative w-40 h-40">
-              <svg className="absolute top-0 left-0 w-full h-full">
+              <svg
+                className="absolute top-0 left-0 w-full h-full"
+                viewBox="0 0 160 160"
+              >
+                <defs>
+                  <linearGradient id={gradientId}>
+                    <stop offset="0%" stopColor="#00AB94" />
+                    <stop
+                      offset={`${(progress / proficiency) * 100}%`}
+                      stopColor="#FFBC02"
+                    />
+                  </linearGradient>
+                </defs>
                 <circle
-                  cx="50%"
-                  cy="50%"
+                  cx="80"
+                  cy="80"
                   r="72"
                   stroke="#D9D9D9"
                   strokeWidth="12"
                   fill="none"
                 />
                 <circle
-                  cx="50%"
-                  cy="50%"
+                  ref={circleRef}
+                  cx="80"
+                  cy="80"
                   r="72"
-                  stroke="#00AB94"
+                  stroke={`url(#${gradientId})`}
                   strokeWidth="12"
                   fill="none"
-                  strokeDasharray={`${proficiency * 4.5}, 999`}
+                  strokeDasharray={strokeDasharray}
+                  strokeDashoffset={strokeDashoffset}
+                  strokeLinecap="round"
                   transform="rotate(-90 80 80)"
+                  style={{ transition: "stroke-dashoffset 0.3s ease-out" }}
                 />
               </svg>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                <p className="text-xl font-semibold">{proficiency}%</p>
+                <p className="text-xl font-semibold">{progress}%</p>
                 <p className="text-sm">
                   {modulesCompleted}/{totalModules} Module
                 </p>
@@ -109,10 +154,14 @@ const Progress = () => {
                 <span>{item.category}</span>
                 <span>{item.label}</span>
               </div>
-              <div className="w-full h-3 bg-gray-200 rounded">
+              <div className="w-full h-3 bg-gray-200 rounded overflow-hidden">
                 <div
-                  className="h-full bg-yellow-400 rounded"
-                  style={{ width: `${(item.value / item.total) * 100}%` }}
+                  className={`h-full bg-[#FFBC02] rounded transition-all duration-2000 ease-in-out`}
+                  style={{
+                    width: animate
+                      ? `${(item.value / item.total) * 100}%`
+                      : "0%",
+                  }}
                 ></div>
               </div>
             </div>
@@ -120,7 +169,7 @@ const Progress = () => {
         </div>
 
         {/* Weekly Activity */}
-        <div className="bg-white p-6 rounded-lg shadow-sm">
+        <div className="bg-white p-6 rounded-lg shadow-sm mt-8">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-bold text-[#57270E]">
               Weekly Activity Chart
@@ -144,33 +193,19 @@ const Progress = () => {
             </div>
           </div>
 
-          <div className="mb-12">
-            <div className="font-medium text-[#57270E]">
-              Total Learning Time {totalLearningTime}
-            </div>
+          <div className="mb-12 font-medium text-[#57270E]">
+            Total Learning Time {totalLearningTime}
           </div>
 
           <div className="relative h-[200px] mb-2">
             {/* Y-axis labels */}
             <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-500">
-              <div>
-                60<sub>min</sub>
-              </div>
-              <div>
-                50<sub>min</sub>
-              </div>
-              <div>
-                40<sub>min</sub>
-              </div>
-              <div>
-                30<sub>min</sub>
-              </div>
-              <div>
-                20<sub>min</sub>
-              </div>
-              <div>
-                10<sub>min</sub>
-              </div>
+              {[60, 50, 40, 30, 20, 10].map((m, i) => (
+                <div key={i}>
+                  {m}
+                  <sub>min</sub>
+                </div>
+              ))}
               <div></div>
             </div>
 
@@ -197,8 +232,12 @@ const Progress = () => {
                       </div>
                     )}
                     <div
-                      className="w-6 bg-yellow-400 rounded-t"
-                      style={{ height: `${(day.minutes / 60) * 180}px` }}
+                      className="w-6 bg-yellow-400 rounded-t transition-all duration-2000 ease-in-out"
+                      style={{
+                        height: animate
+                          ? `${(day.minutes / 60) * 180}px`
+                          : "0px",
+                      }}
                     ></div>
                   </div>
                   <div className="mt-2 text-xs">{day.day}</div>

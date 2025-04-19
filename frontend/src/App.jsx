@@ -25,6 +25,7 @@ import Help from "./pages/class/Help";
 import ClassBooking from "./pages/class/ClassBooking";
 import ViewLeaderboard from "./pages/class/ViewLeaderboard";
 import Discussion from "./pages/class/Discussion";
+import PastLessons from "./pages/class/PastLesson";
 
 const App = () => {
   return (
@@ -65,6 +66,10 @@ const App = () => {
             <Route path="/class/profile" element={<Profile />} />
             <Route path="/class/help" element={<Help />} />
             <Route path="/class/booking" element={<ClassBooking />} />
+            <Route
+              path="/class/booking/past-lesson"
+              element={<PastLessons />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>
