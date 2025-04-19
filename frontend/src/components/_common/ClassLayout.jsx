@@ -270,6 +270,7 @@ const ClassLayout = () => {
                   ? "text-[#C84C32]"
                   : "text-gray-500 hover:text-gray-400"
               }`}
+              onClick={() => navigate(item.router)}
             >
               {item.icon}
             </div>
