@@ -1,7 +1,9 @@
 import { Award } from "lucide-react";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Class = () => {
+  const navigate = useNavigate();
   const lessons = [
     {
       id: 1,
@@ -122,6 +124,7 @@ const Class = () => {
                           backgroundColor: "#C23925",
                           borderRadius: "20px",
                         }}
+                        onClick={() => navigate("/class/learn")}
                       >
                         {activity.status === "open" ? "Open" : "Continue"}
                       </Button>
