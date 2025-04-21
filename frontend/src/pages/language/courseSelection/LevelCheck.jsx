@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 export default function LevelCheck() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -9,6 +10,7 @@ export default function LevelCheck() {
     timeCommitment: "",
     nickname: "",
   });
+  const navigate = useNavigate();
 
   const totalSteps = 4;
   const progressPercentage = ((currentStep + 1) / totalSteps) * 100;
@@ -23,6 +25,7 @@ export default function LevelCheck() {
     } else {
       // Submit form or navigate to next page
       console.log("Form submitted:", formData);
+      navigate("/class");
     }
   };
 

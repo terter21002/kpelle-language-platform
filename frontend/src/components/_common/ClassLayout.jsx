@@ -93,7 +93,10 @@ const ClassLayout = () => {
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
       {/* Sidebar - Hidden on mobile */}
       <div className="hidden md:flex flex-col w-64 bg-white border-r p-4 space-y-2">
-        <div className="flex items-center mb-6 ml-2">
+        <div
+          className="flex items-center mb-6 ml-2 cursor-pointer"
+          onClick={() => navigate("/class")}
+        >
           <img
             src="/landing_page/header_logo.png"
             alt="Logo"
@@ -105,7 +108,7 @@ const ClassLayout = () => {
         </div>
 
         {navItems.map((item, index) => {
-          const isActive = location.pathname === item.router;
+          const isActive = location.pathname.includes(item.router);
 
           return (
             <div
@@ -129,7 +132,10 @@ const ClassLayout = () => {
           <div className="bg-white flex items-center justify-between border-b p-4">
             <div className="flex items-center space-x-2">
               {/* Logo - Mobile */}
-              <div className="md:hidden flex items-center">
+              <div
+                className="md:hidden flex items-center cursor-pointer"
+                onClick={() => navigate("/class")}
+              >
                 <img
                   src="/landing_page/header_logo.png"
                   alt="Logo"
@@ -268,7 +274,7 @@ const ClassLayout = () => {
         {/* Mobile Navigation */}
         <div className="md:hidden flex justify-around items-center bg-[#F4F4F4] p-2">
           {navItems.map((item, index) => {
-            const isActive = location.pathname === item.router;
+            const isActive = location.pathname.includes(item.router);
 
             return (
               <div
