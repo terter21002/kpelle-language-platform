@@ -26,6 +26,7 @@ import ClassBooking from "./pages/class/ClassBooking";
 import ViewLeaderboard from "./pages/class/ViewLeaderboard";
 import Discussion from "./pages/class/Discussion";
 import PastLessons from "./pages/class/PastLesson";
+import TutorRegister from "./pages/tutor_portal/auth/TutorRegister";
 
 const App = () => {
   return (
@@ -71,6 +72,10 @@ const App = () => {
               element={<PastLessons />}
             />
           </Route>
+          {/* <Route path="/tutor-portal" element={<TutorLayout />}>
+            <Route index element={<TutorDashboard />} />
+          </Route> */}
+          <Route path="/tutor-portal/register" element={<TutorRegister />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>
