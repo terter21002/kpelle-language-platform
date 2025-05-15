@@ -4,9 +4,13 @@ import { config } from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import session from 'express-session';
-import routes from './routes/auth.js';
+import authRoutes from './routes/auth.js';
 import passport from 'passport';
 import configurePassport from './config/passportConfig.js';
+
+import languageRoutes from './routes/languages.js';
+import lessonRoutes from './routes/lessons.js';
+import userRoutes from './routes/users.js';
 
 config();
 const app = express();
@@ -39,7 +43,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/api/auth', routes);
+app.use('/api/auth', authRoutes);
+app.use('/api/languages', languageRoutes);
+app.use('/api/lessons', lessonRoutes);
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
