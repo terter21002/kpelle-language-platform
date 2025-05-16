@@ -26,8 +26,8 @@ const Class = () => {
     fetchLessons();
   }, [selectedLanguage, selectedLevel]);
 
-  const handleLessonClick = (lessonId) => {
-    navigate(`/class/learn/${lessonId}`);
+  const handleActivityClick = (lessonId, activityId) => {
+    navigate(`/class/learn/${lessonId}/activity/${activityId}`);
   };
 
   return (
@@ -63,7 +63,10 @@ const Class = () => {
                     : lesson.activities[index - 1].unitProgress === 100;
 
                 return (
-                  <div key={index} className="relative flex items-start">
+                  <div
+                    key={activity._id || index}
+                    className="relative flex items-start"
+                  >
                     {/* Connector line */}
                     {index !== 0 && (
                       <div
@@ -125,7 +128,9 @@ const Class = () => {
                             backgroundColor: "#C23925",
                             borderRadius: "20px",
                           }}
-                          onClick={() => handleLessonClick(lesson._id)}
+                          onClick={() =>
+                            handleActivityClick(lesson._id, activity._id)
+                          }
                         >
                           {activity.status === "open" ? "Open" : "Continue"}
                         </Button>
