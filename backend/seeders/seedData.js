@@ -215,6 +215,238 @@ const seedLanguages = async () => {
         },
       ],
     },
+    {
+      name: 'Gio Language',
+      description: 'Learn the Gio language spoken in Liberia',
+      imageUrl: '/images/gio.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
+    {
+      name: 'Mano Language',
+      description: 'Learn the Mano language spoken in Liberia',
+      imageUrl: '/images/mano.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
+    {
+      name: 'Kissi Language',
+      description: 'Learn the Kissi language spoken in Liberia',
+      imageUrl: '/images/kissi.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
+    {
+      name: 'Kru Language',
+      description: 'Learn the Kru language spoken in Liberia',
+      imageUrl: '/images/kru.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
+    {
+      name: 'Grebo Language',
+      description: 'Learn the Grebo language spoken in Liberia',
+      imageUrl: '/images/grebo.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
+    {
+      name: 'Gbandhi Language',
+      description: 'Learn the Gbandhi language spoken in Liberia',
+      imageUrl: '/images/gbandhi.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
+    {
+      name: 'Mende Language',
+      description: 'Learn the Mende language spoken in Liberia',
+      imageUrl: '/images/mende.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
+    {
+      name: 'Lorma Language',
+      description: 'Learn the Lorma language spoken in Liberia',
+      imageUrl: '/images/lorma.png',
+      levels: [
+        {
+          name: 'Beginner',
+          description: 'Basic vocabulary and phrases',
+          lessonRange: { start: 1, end: 20 },
+          topics: [
+            'Greetings and Basic Phrases',
+            'Numbers and Counting',
+            'Days, Months, and Time',
+          ],
+        },
+        {
+          name: 'Intermediate',
+          description: 'More complex sentence structures and conversations',
+          lessonRange: { start: 21, end: 60 },
+          topics: ['Expressing Opinions and Preferences', 'Health and Illness'],
+        },
+        {
+          name: 'Advanced',
+          description: 'Advanced topics and fluency development',
+          lessonRange: { start: 61, end: 100 },
+          topics: ['Discussing Social Justice Issues'],
+        },
+      ],
+    },
   ];
 
   try {
@@ -231,60 +463,81 @@ const seedLanguages = async () => {
 const seedLessons = async () => {
   try {
     const languages = await Language.find();
-    const lessons = [];
+    let lessons = [];
 
     for (const language of languages) {
       for (const level of language.levels) {
+        const levelLessons = [];
+
         for (let i = level.lessonRange.start; i <= level.lessonRange.end; i++) {
+          const topicIndex = i - level.lessonRange.start; // Ensure sequential topic selection
+          const topic = level.topics[topicIndex % level.topics.length];
+
           const lesson = {
             languageId: language._id,
             level: level.name,
             lessonNumber: i,
-            title: `Lesson ${i}, Section ${Math.ceil(i / 5)}`,
-            subtitle: `${level.topics[i % level.topics.length]} (${level.name})`,
+            title: `Lesson ${i}`,
+            subtitle: `${topic} (${level.name})`,
             imageUrl: `/images/${language.name.split(' ')[0].toLowerCase()}_icon_${(i % 3) + 1}.png`,
             progress: 0,
             activities: [
               {
-                title: `${language.name.split(' ')[0]} ${level.topics[i % level.topics.length].split(' ')[0]}`,
+                title: `${language.name.split(' ')[0]} ${topic.split(' ')[0]}`,
                 type: 'Listening',
-                status: i === 1 ? 'open' : 'locked',
-                unitProgress: i === 1 ? 0 : 0,
+                status: i === level.lessonRange.start ? 'open' : 'locked',
+                unitProgress: 0,
               },
               {
-                title: `${language.name.split(' ')[0]} ${level.topics[i % level.topics.length].split(' ')[0]}`,
+                title: `${language.name.split(' ')[0]} ${topic.split(' ')[0]}`,
                 type: 'Speaking',
                 status: 'locked',
                 unitProgress: 0,
               },
               {
-                title: `${language.name.split(' ')[0]} ${level.topics[i % level.topics.length].split(' ')[0]}`,
+                title: `${language.name.split(' ')[0]} ${topic.split(' ')[0]}`,
                 type: 'Pronunciation',
                 status: 'locked',
                 unitProgress: 0,
               },
               {
-                title: `${language.name.split(' ')[0]} ${level.topics[i % level.topics.length].split(' ')[0]}`,
+                title: `${language.name.split(' ')[0]} ${topic.split(' ')[0]}`,
                 type: 'Drag and Drop Games',
                 status: 'locked',
                 unitProgress: 0,
               },
               {
-                title: `${language.name.split(' ')[0]} ${level.topics[i % level.topics.length].split(' ')[0]}`,
+                title: `${language.name.split(' ')[0]} ${topic.split(' ')[0]}`,
                 type: 'Quiz',
                 status: 'locked',
                 unitProgress: 0,
               },
             ],
+            order: i, // Explicit ordering field
           };
-          lessons.push(lesson);
+          levelLessons.push(lesson);
         }
+
+        // Sort level lessons before adding to main array
+        levelLessons.sort((a, b) => a.lessonNumber - b.lessonNumber);
+        lessons = lessons.concat(levelLessons);
       }
     }
 
+    // Sort all lessons by language, then level, then lesson number
+    lessons.sort((a, b) => {
+      if (a.languageId.toString() !== b.languageId.toString()) {
+        return a.languageId.toString().localeCompare(b.languageId.toString());
+      }
+      if (a.level !== b.level) {
+        return a.level.localeCompare(b.level);
+      }
+      return a.lessonNumber - b.lessonNumber;
+    });
+
     await Lesson.deleteMany({});
     const createdLessons = await Lesson.insertMany(lessons);
-    console.log(`${createdLessons.length} lessons seeded`);
+    console.log(`${createdLessons.length} lessons seeded in correct order`);
     return createdLessons;
   } catch (err) {
     console.error('Error seeding lessons:', err);

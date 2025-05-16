@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BookOpenText,
   Book,
@@ -13,63 +13,73 @@ import {
 } from "lucide-react";
 import { Menu, MenuItem, Button } from "@mui/material";
 import { ExpandMore as ExpandMoreIcon } from "@mui/icons-material";
-import { Outlet } from "react-router-dom";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 
 const ClassLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [languages, setLanguages] = useState([]);
+  const [levels, setLevels] = useState([]);
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [selectedLevel, setSelectedLevel] = useState("Beginner");
+  const [languageAnchorEl, setLanguageAnchorEl] = useState(null);
+  const [levelAnchorEl, setLevelAnchorEl] = useState(null);
 
   const navItems = [
     {
       icon: <BookOpenText className="w-5 h-5" />,
       label: "Learn",
-      active: true,
       router: "/class/learn",
     },
     {
       icon: <Book className="w-5 h-5" />,
       label: "Courses",
-      active: false,
       router: "/class/course",
     },
     {
       icon: <BarChart2 className="w-5 h-5" />,
       label: "Progress Report",
-      active: false,
       router: "/class/progress",
     },
     {
       icon: <Trophy className="w-5 h-5" />,
       label: "Leaderboards",
-      active: false,
       router: "/class/leaderboard",
     },
     {
       icon: <User className="w-5 h-5" />,
       label: "My Profile",
-      active: false,
       router: "/class/profile",
     },
     {
       icon: <HelpCircle className="w-5 h-5" />,
       label: "Help Center",
-      active: false,
       router: "/class/help",
     },
     {
       icon: <Calendar className="w-5 h-5" />,
       label: "My Bookings",
-      active: false,
       router: "/class/booking",
     },
   ];
 
-  const [languageAnchorEl, setLanguageAnchorEl] = useState(null);
-  const [levelAnchorEl, setLevelAnchorEl] = useState(null);
+  useEffect(() => {
+    const fetchLanguages = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/languages");
+        setLanguages(response.data);
+        if (response.data.length > 0) {
+          setSelectedLanguage(response.data[0]);
+          setLevels(response.data[0].levels);
+        }
+      } catch (error) {
+        console.error("Error fetching languages:", error);
+      }
+    };
 
-  const [selectedLanguage, setSelectedLanguage] = useState("Kpelle Language");
-  const [selectedLevel, setSelectedLevel] = useState("Beginner");
+    fetchLanguages();
+  }, []);
 
   const handleLanguageClick = (event) => {
     setLanguageAnchorEl(event.currentTarget);
@@ -80,7 +90,11 @@ const ClassLayout = () => {
   };
 
   const handleLanguageClose = (language) => {
-    if (language) setSelectedLanguage(language);
+    if (language) {
+      setSelectedLanguage(language);
+      setLevels(language.levels);
+      setSelectedLevel(language.levels[0].name);
+    }
     setLanguageAnchorEl(null);
   };
 
@@ -148,34 +162,37 @@ const ClassLayout = () => {
 
               {/* Language Selector */}
               <div className="md:flex hidden">
-                <Button
-                  onClick={handleLanguageClick}
-                  variant="outlined"
-                  style={{
-                    borderRadius: "999px",
-                    textTransform: "none",
-                    text: "#DD4E38",
-                  }}
-                  endIcon={<ExpandMoreIcon />}
-                >
-                  {selectedLanguage}
-                </Button>
-                <Menu
-                  anchorEl={languageAnchorEl}
-                  open={Boolean(languageAnchorEl)}
-                  onClose={() => handleLanguageClose(null)}
-                >
-                  {["Kpelle Language", "Bassa Language", "Vai Language"].map(
-                    (lang) => (
-                      <MenuItem
-                        key={lang}
-                        onClick={() => handleLanguageClose(lang)}
-                      >
-                        {lang}
-                      </MenuItem>
-                    )
-                  )}
-                </Menu>
+                {selectedLanguage && (
+                  <>
+                    <Button
+                      onClick={handleLanguageClick}
+                      variant="outlined"
+                      style={{
+                        borderRadius: "999px",
+                        borderColor: "#DD4E38",
+                        textTransform: "none",
+                        color: "#DD4E38",
+                      }}
+                      endIcon={<ExpandMoreIcon />}
+                    >
+                      {selectedLanguage.name}
+                    </Button>
+                    <Menu
+                      anchorEl={languageAnchorEl}
+                      open={Boolean(languageAnchorEl)}
+                      onClose={() => handleLanguageClose(null)}
+                    >
+                      {languages.map((lang) => (
+                        <MenuItem
+                          key={lang._id}
+                          onClick={() => handleLanguageClose(lang)}
+                        >
+                          {lang.name}
+                        </MenuItem>
+                      ))}
+                    </Menu>
+                  </>
+                )}
               </div>
             </div>
 
@@ -186,7 +203,12 @@ const ClassLayout = () => {
                 <Button
                   onClick={handleLevelClick}
                   variant="outlined"
-                  style={{ borderRadius: "999px", textTransform: "none" }}
+                  style={{
+                    borderRadius: "999px",
+                    borderColor: "#DD4E38",
+                    textTransform: "none",
+                    color: "#DD4E38",
+                  }}
                   endIcon={<ExpandMoreIcon />}
                 >
                   {selectedLevel}
@@ -196,12 +218,12 @@ const ClassLayout = () => {
                   open={Boolean(levelAnchorEl)}
                   onClose={() => handleLevelClose(null)}
                 >
-                  {["Beginner", "Intermediate", "Advanced"].map((level) => (
+                  {levels.map((level) => (
                     <MenuItem
-                      key={level}
-                      onClick={() => handleLevelClose(level)}
+                      key={level.name}
+                      onClick={() => handleLevelClose(level.name)}
                     >
-                      {level}
+                      {level.name}
                     </MenuItem>
                   ))}
                 </Menu>
@@ -222,30 +244,32 @@ const ClassLayout = () => {
 
           <div className="md:hidden flex justify-between bg-[#F4F4F4] p-4">
             <div className="">
-              <Button
-                onClick={handleLanguageClick}
-                variant="outlined"
-                style={{ borderRadius: "999px", textTransform: "none" }}
-                endIcon={<ExpandMoreIcon />}
-              >
-                {selectedLanguage}
-              </Button>
-              <Menu
-                anchorEl={languageAnchorEl}
-                open={Boolean(languageAnchorEl)}
-                onClose={() => handleLanguageClose(null)}
-              >
-                {["Kpelle Language", "Bassa Language", "Vai Language"].map(
-                  (lang) => (
-                    <MenuItem
-                      key={lang}
-                      onClick={() => handleLanguageClose(lang)}
-                    >
-                      {lang}
-                    </MenuItem>
-                  )
-                )}
-              </Menu>
+              {selectedLanguage && (
+                <>
+                  <Button
+                    onClick={handleLanguageClick}
+                    variant="outlined"
+                    style={{ borderRadius: "999px", textTransform: "none" }}
+                    endIcon={<ExpandMoreIcon />}
+                  >
+                    {selectedLanguage.name}
+                  </Button>
+                  <Menu
+                    anchorEl={languageAnchorEl}
+                    open={Boolean(languageAnchorEl)}
+                    onClose={() => handleLanguageClose(null)}
+                  >
+                    {languages.map((lang) => (
+                      <MenuItem
+                        key={lang._id}
+                        onClick={() => handleLanguageClose(lang)}
+                      >
+                        {lang.name}
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </>
+              )}
             </div>
             <div className="">
               <Button
@@ -261,9 +285,12 @@ const ClassLayout = () => {
                 open={Boolean(levelAnchorEl)}
                 onClose={() => handleLevelClose(null)}
               >
-                {["Beginner", "Intermediate", "Advanced"].map((level) => (
-                  <MenuItem key={level} onClick={() => handleLevelClose(level)}>
-                    {level}
+                {levels.map((level) => (
+                  <MenuItem
+                    key={level.name}
+                    onClick={() => handleLevelClose(level.name)}
+                  >
+                    {level.name}
                   </MenuItem>
                 ))}
               </Menu>
@@ -292,7 +319,7 @@ const ClassLayout = () => {
           })}
         </div>
         <main className="flex-1 p-4 overflow-auto bg-[#F4F4F4]">
-          <Outlet />
+          <Outlet context={{ selectedLanguage, selectedLevel }} />
         </main>
       </div>
     </div>
