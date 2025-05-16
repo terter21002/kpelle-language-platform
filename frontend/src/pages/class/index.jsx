@@ -1,107 +1,42 @@
+import { useState, useEffect } from "react";
 import { Award } from "lucide-react";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
+import axios from "axios";
 
 const Class = () => {
   const navigate = useNavigate();
-  const lessons = [
-    {
-      id: 1,
-      title: "Lesson 1, Section 1",
-      subtitle: "Basic Greetings & Introduction (Beginner)",
-      progress: 100,
-      imageUrl: "/landing_page/icon_greeting.png",
-      activities: [
-        {
-          id: 1,
-          title: "Kpelle Greetings",
-          type: "Listening",
-          status: "open",
-          unitProgress: 100,
-        },
-        {
-          id: 2,
-          title: "Kpelle Greetings",
-          type: "Speaking",
-          status: "locked",
-          unitProgress: 100,
-        },
-        {
-          id: 3,
-          title: "Kpelle Greetings",
-          type: "Pronunciation",
-          status: "locked",
-          unitProgress: 100,
-        },
-        {
-          id: 4,
-          title: "Kpelle Greetings",
-          type: "Drag and Drop Games",
-          status: "locked",
-          unitProgress: 100,
-        },
-        {
-          id: 5,
-          title: "Kpelle Greetings",
-          type: "Quiz",
-          status: "locked",
-          unitProgress: 100,
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Lesson 2, Section 1",
-      subtitle: "Numbers & Counting (Beginner)",
-      progress: 10,
-      imageUrl: "/landing_page/icon_number.png",
-      activities: [
-        {
-          id: 1,
-          title: "Numbers and counting",
-          type: "Listening",
-          status: "locked",
-          unitProgress: 100,
-        },
-        {
-          id: 2,
-          title: "Numbers and counting",
-          type: "Speaking",
-          status: "continue",
-          unitProgress: 20,
-        },
-        {
-          id: 3,
-          title: "Numbers and counting",
-          type: "Pronunciation",
-          status: "locked",
-          unitProgress: 0,
-        },
-        {
-          id: 4,
-          title: "Numbers and counting",
-          type: "Drag and Drop Games",
-          status: "locked",
-          unitProgress: 0,
-        },
-        {
-          id: 5,
-          title: "Numbers and counting",
-          type: "Quiz",
-          status: "locked",
-          unitProgress: 0,
-        },
-      ],
-    },
-  ];
+  const { selectedLanguage, selectedLevel } = useOutletContext();
+  const [lessons, setLessons] = useState([]);
+
+  useEffect(() => {
+    const fetchLessons = async () => {
+      if (selectedLanguage && selectedLevel) {
+        try {
+          const response = await axios.get(
+            `http://localhost:5000/api/lessons/${selectedLanguage._id}/${selectedLevel}`
+          );
+          setLessons(response.data);
+        } catch (error) {
+          console.error("Error fetching lessons:", error);
+        }
+      }
+    };
+
+    fetchLessons();
+  }, [selectedLanguage, selectedLevel]);
+
+  const handleLessonClick = (lessonId) => {
+    navigate(`/class/learn/${lessonId}`);
+  };
 
   return (
     <div>
       {lessons.map((lesson) => (
-        <div key={lesson.id} className="mb-8">
+        <div key={lesson._id} className="mb-8">
           <div
             className={`rounded-md p-4 mb-4 flex items-center justify-between ${
-              lesson.progress == 0
+              lesson.progress === 0
                 ? "bg-[#E1D9D9] text-[rgba(0,0,0,0.2)]"
                 : "bg-[#E95050] text-white"
             }`}
@@ -190,7 +125,7 @@ const Class = () => {
                             backgroundColor: "#C23925",
                             borderRadius: "20px",
                           }}
-                          onClick={() => navigate("/class/learn")}
+                          onClick={() => handleLessonClick(lesson._id)}
                         >
                           {activity.status === "open" ? "Open" : "Continue"}
                         </Button>

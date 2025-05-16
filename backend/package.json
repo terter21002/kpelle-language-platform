@@ -19,7 +19,8 @@
     "lint": "eslint . --ext .js",
     "fix": "eslint . --ext .js --fix",
     "format": "prettier --write \"**/*.js\"",
-    "prestart": "start mongod --dbpath ./db"
+    "prestart": "start mongod --dbpath ./db",
+    "seed": "node seeders/seedData.js"
   },
   "type": "module",
   "devDependencies": {
